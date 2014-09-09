@@ -1,6 +1,6 @@
 .DS_Store
 .idea/
-workbench.iml
+bootcamp.iml
 out/
 target/
 logs/
