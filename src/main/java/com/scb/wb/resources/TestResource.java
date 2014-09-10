@@ -17,7 +17,6 @@ public class TestResource {
 
     @GET
     public Response index() {
-        System.out.println("sdkasdslak");
         String pageContent = "";
         try {
             URL clientPage = Resources.getResource("assets/index.htm");
