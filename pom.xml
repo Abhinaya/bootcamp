@@ -69,6 +69,31 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.kelveden</groupId>
+                <artifactId>maven-karma-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <karmaExecutable>${basedir}/node_modules/karma/bin/karma</karmaExecutable>
+                    <configFile>src/main/resources/karma.conf.js</configFile>
+                    <reportsDirectory>${project.build.directory}/karma-reports</reportsDirectory>
+                    <browsers>PhantomJS</browsers>
+                    <autoWatch>false</autoWatch>
+                    <singleRun>true</singleRun>
+                    <colors>true</colors>
+                    <skipKarma>false</skipKarma>
+                    <skipTests>false</skipTests>
+                    <karmaFailureIgnore>false</karmaFailureIgnore>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
