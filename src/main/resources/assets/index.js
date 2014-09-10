@@ -3,23 +3,32 @@
  *
  */
 
-var userlist = [{username: "rajiv", password: "password"}, {username: "abhi", password: "password"}]
+var USER_LIST = [{username: "rajiv", password: "password"}, {username: "abhi", password: "password"}]
 
 $(document).ready(
-   function(){
-       $('input[type=button]').click(function(){
+   function() {
+       var getMatchedUser = function (username, password) {
+           return USER_LIST.filter(function (user) {
+               return user.username == username && user.password == password
+           })[0];
+       };
+
+       var login = function () {
 
            var usernameField = $('input[name="username"]')[0],
-               passwordField =  $('input[type="password"]')[0];
-           var matchedUser = userlist.filter(function(a){return a.username == usernameField.value && a.password== passwordField.value;})
+               passwordField = $('input[type="password"]')[0];
 
-           if(matchedUser[0]){
-               $('body').html('Hello '+ usernameField.value);
+           var matchedUser = getMatchedUser(usernameField.value, passwordField.value);
+
+           if (matchedUser) {
+               $('body').html('Hello ' + usernameField.value);
            }
-           else{
+           else {
                $('.error').html('Please Enter valid username/password');
            }
-       });
+       };
+
+       $('input[type=button]').click(login);
    }
 );
 
