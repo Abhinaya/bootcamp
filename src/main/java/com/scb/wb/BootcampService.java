@@ -4,6 +4,7 @@ package com.scb.wb;
 import com.hubspot.dropwizard.guice.GuiceBundle;
 import com.scb.wb.domains.User;
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
@@ -31,6 +32,7 @@ public class BootcampService extends Application<BootcampConfiguration> {
                                                         .build();
         bootstrap.addBundle(guiceBundle);
         bootstrap.addBundle(hibernate);
+        bootstrap.addBundle(new AssetsBundle());
     }
 
     @Override

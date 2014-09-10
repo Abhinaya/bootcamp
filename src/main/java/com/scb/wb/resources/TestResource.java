@@ -1,19 +1,31 @@
 package com.scb.wb.resources;
 
-import com.scb.wb.domains.User;
-import io.dropwizard.jersey.params.LongParam;
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.io.IOException;
+import java.net.URL;
 
 @Path("/test")
-@Produces(MediaType.APPLICATION_JSON)
+@Produces(MediaType.TEXT_HTML)
 public class TestResource {
 
     @GET
-    public User getHome(){
-        return User.findUser(new LongParam("1"));
+    public Response index() {
+        System.out.println("sdkasdslak");
+        String pageContent = "";
+        try {
+            URL clientPage = Resources.getResource("assets/index.htm");
+            pageContent = Resources.toString(clientPage, Charsets.UTF_8);
+        } catch (IOException e) {
+
+            return Response.serverError().build();
+        }
+        return Response.ok(pageContent).build();
     }
 }
