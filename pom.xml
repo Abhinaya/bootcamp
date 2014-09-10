@@ -82,7 +82,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <karmaExecutable>${basedir}/node_modules/karma/bin/karma</karmaExecutable>
                     <configFile>src/main/resources/karma.conf.js</configFile>
                     <reportsDirectory>${project.build.directory}/karma-reports</reportsDirectory>
                     <browsers>PhantomJS</browsers>
